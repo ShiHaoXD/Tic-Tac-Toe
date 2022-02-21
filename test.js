@@ -1,19 +1,20 @@
-var arr = [1, 2, 3, 3, 4, 'a', 'a', 'b', 'c'];
-
-function reduce(arr) {
-    var res = [];
-    for (var item1 of arr) {
-        for (var item2 of res) {
-            if (item2 != item1) {
-                item2.push(item1);
-            }
-            if (item2 == item1) {
-                continue;
-            }
-        }
-    }
-
-    return res;
+function course() {
+	this.coursename = "CSA前端培训";
+	this.semester = 2;
 }
- 
-console.log(reduce(arr)); //[1, 2, 3, 4, "a", "b", "c"]
+function student(name, age, gender) {
+	this.name = name;
+	this.age = age;
+	this.gender = gender;
+	this.moreinfo = function () {
+		var detail = function () {
+			console.log(that.gender);
+		};
+		detail();
+	};
+	course.call(this);
+}
+// student.prototype=new course();
+var student1 = new student("小明", 18, "男");
+console.log(student1.coursename, student1.semester); //课程名字和第几期
+student1.moreinfo(); //你的性别

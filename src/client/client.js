@@ -38,7 +38,7 @@ list.onclick = (e) => {
 			downOrder = 1;
 			console.log(3);
 		}
-		socket.emit("downUpdate", { listValue, downOrder ,status });
+		socket.emit("downUpdate", { listValue, downOrder, status });
 	} else {
 		return 0;
 	}
@@ -46,11 +46,11 @@ list.onclick = (e) => {
 const connectPromise = new Promise((resolve) => {
 	socket.on("connect", () => {
 		resolve();
-		let roomId=prompt("请输入房间号");
-		socket.emit("join",roomId);
-		socket.on("join",function(value){
-			userList=value;
-		})
+		let roomId = prompt("请输入房间号");
+		socket.emit("join", roomId);
+		socket.on("join", function (value) {
+			userList = value;
+		});
 		socket.on("downUpdate", function (msg) {
 			listValue = msg.listValue;
 			downOrder = msg.downOrder;
